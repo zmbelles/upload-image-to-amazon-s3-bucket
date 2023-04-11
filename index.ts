@@ -92,13 +92,12 @@ export default async function handler(
     case "POST":
     {
         const file = await parseFormFile(req, "file");
-				if(file === null){
-					res.status(400).json({ success: false, httpStatus: "Bad Request" });
-				}
+	if(file === null){
+		res.status(400).json({ success: false, httpStatus: "Bad Request" });
+	}
         console.log(file);
         const url = await uploadFileToS3(file);
-          
-				res.status(201).json({ success: true, httpStatus: "Accepted", data: url})
+        res.status(201).json({ success: true, httpStatus: "Accepted", data: url})
   	}
     }
 }
