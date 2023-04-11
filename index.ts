@@ -2,7 +2,6 @@ import type { NextApiRequest, NextApiResponse } from "next";
 import multerS3 from 'multer-s3';
 import multer from "multer";
 import connectDB from "@/lib/mongodb";
-import { getAuthUser } from "@/lib/auth";
 import { S3Client } from '@aws-sdk/client-s3';
 import { parseFormFile } from "@/lib/parse-form-file";
 import AWS from "aws-sdk";
@@ -90,10 +89,6 @@ export default async function handler(
   await connectDB();
 
   switch (method) {
-    case "GET": {
-      const data = req.query.data;
-      res.status(200).json({ success: true, httpStatus: "200", data: data });
-    }
     case "POST":
     {
         const file = await parseFormFile(req, "file");
@@ -105,5 +100,5 @@ export default async function handler(
           
 				res.status(201).json({ success: true, httpStatus: "Accepted", data: url})
   	}
-	}
+    }
 }
