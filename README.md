@@ -8,8 +8,8 @@
 #### Bucket: process.env.AWS_BUCKET_NAME || "default": the name of your amazon s3 bucket
 ## Files
 ### index.ts
-##### This function is used to take the incoming NextApiRequest and pass it along to parse-form-file.ts to then be taken to amazon-s3.ts to be parsed
+##### This function is used to take the incoming NextApiRequest and pass it along to parse-form-file.ts to then be taken to amazon-s3.ts to be uploaded
 ### parse-form-file.ts
-##### uses the formidable library to parse the file from the request along with the fs library to get the data to then pass back to the caller
+##### uses the formidable library to parse the file from the request along with the fs library to get the data to then pass back to the caller as a buffer
 ### amazon-s3.ts
 ##### using the data buffer from parse-form-file.ts, upload the image to amazon s3
