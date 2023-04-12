@@ -1,5 +1,4 @@
 import type { NextApiRequest, NextApiResponse } from "next";
-import connectDB from "@/lib/mongodb";
 import { S3Client } from '@aws-sdk/client-s3';
 import { parseFormFile } from "@/parse-form-file";
 import AWS from "aws-sdk";
@@ -26,8 +25,6 @@ export default async function handler(
   res: NextApiResponse
 ) {
   const { method } = req;
-
-  await connectDB();
 
   switch (method) {
     case "POST":
